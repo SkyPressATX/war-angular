@@ -1,7 +1,5 @@
 var extend = angular.module("$warExtend",[
     'ui.router',
-    'colorpicker.module',
-    'wysiwyg.module',
     'warApiClient'
 ])
 	// Constants
@@ -42,7 +40,7 @@ var extend = angular.module("$warExtend",[
         $warComponentsProvider.add( 'warRoot', {
             templateUrl: $warObject.warPath + '/inc/templates/root.html',
             bindings: {
-                warOptions: '<'
+                warOptions: '='
             }
         });
         $warComponentsProvider.add( 'warHome', {
@@ -50,9 +48,15 @@ var extend = angular.module("$warExtend",[
         });
         $warComponentsProvider.add( 'warHeader', {
             templateUrl: $warObject.warPath + '/inc/templates/header.html',
+            require: {
+                warRoot: '^warRoot'
+            }
         });
         $warComponentsProvider.add( 'warFooter', {
             templateUrl: $warObject.warPath + '/inc/templates/footer.html',
+            require: {
+                warRoot: '^warRoot'
+            }
         });
     }])
 	// Routes Provider Config
@@ -148,7 +152,7 @@ angular.module( '$warModule', [ '$warExtend' ] )
         '$compileProvider',
         function( warComponentsConstant, $compileProvider ){
             _.forEach( warComponentsConstant, function(v,k){
-                if( v.parent == 'root' ) _.set( v, 'require.warRoot', '^warRoot' );
+                // if( v.parent == 'root' ) _.set( v, 'require.warRoot', '^warRoot' );
                 $compileProvider.component( k, v );
             });
         }
