@@ -1,0 +1,16 @@
+/* minifyOnSave:false */
+/*
+Theme Name: WAR Angular Theme
+Author: BMO
+Company: SkyPress
+Description: WAR Theme using Angular 1.x Components
+Version: 0.0.1
+License: MIT
+*/
+
+body {
+    min-height: 100vh;
+}
+a, button {
+    cursor: pointer;
+}
