@@ -30,16 +30,10 @@ if( ! class_exists( 'war_theme' ) ):
 
             return [
                 'war_bootstrap_core_css' => [
-                    'url' => get_template_directory_uri().'/inc/lib/bootstrap.min.css'
+                    'url' => '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'
                 ],
                 'war_ionicons' => [
-                    'url' => get_template_directory_uri().'/inc/lib/ionicons.min.css'
-                ],
-                'war_tether_css' => [
-                    'url' => get_template_directory_uri().'/inc/lib/tether.min.css'
-                ],
-                'war_colorpicker_css' => [
-                    'url' => get_template_directory_uri().'/inc/lib/colorpicker.min.css'
+                    'url' => '//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'
                 ],
                 'war_parent_style' => ( is_child_theme() ) ? $war_parent_style : false,
                 'war_style' => [
@@ -52,31 +46,23 @@ if( ! class_exists( 'war_theme' ) ):
         private function war_default_priority_scripts(){
             return array(
                 'war_tether_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/tether.min.js',
+                    'url' => '//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js',
                     'depends' => array('jquery')
                 ),
                 'war_lodash_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/lodash.min.js',
+                    'url' => '//cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js',
                     'depends' => array('jquery')
                 ),
                 'war_bootstrap_core_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/bootstrap.min.js',
+                    'url' => '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js',
                     'depends' => array('jquery','war_tether_js')
                 ),
                 'war_angular_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/angular.min.js',
+                    'url' => '//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js',
                     'depends' => array('jquery')
                 ),
                 'war_ui_router_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/angular-ui-router.min.js',
-                    'depends' => array('war_angular_js')
-                ),
-                'war_colorpicker_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/bootstrap-colorpicker-module.min.js',
-                    'depends' => array('war_angular_js')
-                ),
-                'war_wysiwyg_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/wysiwyg.js',
+                    'url' => '//unpkg.com/angular-ui-router/release/angular-ui-router.min.js',
                     'depends' => array('war_angular_js')
                 ),
                 'war_api_client_js' => array(
