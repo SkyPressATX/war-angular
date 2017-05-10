@@ -66,11 +66,11 @@ if( ! class_exists( 'war_theme' ) ):
                     'depends' => array('war_angular_js')
                 ),
                 'war_api_client_js' => array(
-                    'url' => get_template_directory_uri().'/inc/lib/warApiClient.js',
+                    'url' => get_template_directory_uri().'/inc/lib/warApiClient.min.js',
                     'depends' => array('war_angular_js')
                 ),
-                'war_extend_module_js' => [
-                    'url' => get_template_directory_uri() . '/inc/angular/war-priority.min.js',
+                'war_angular_module_js' => [
+                    'url' => get_template_directory_uri() . '/inc/angular/war-angular.min.js',
                     'depends' => [ 'war_angular_js' ]
                 ]
             );
@@ -122,7 +122,7 @@ if( ! class_exists( 'war_theme' ) ):
                 wp_register_style( $name, $item[ 'url' ], $depends );
                 wp_enqueue_style( $name );
             }else{
-                if( ! $depends ) $depends = [ 'war_extend_module_js' ];
+                if( ! $depends ) $depends = [ 'war_angular_module_js' ];
                 wp_register_script( $name, $item[ "url" ], $depends, null, true );
                 wp_enqueue_script( $name, $name );
 
