@@ -1,0 +1,16 @@
+<div style="background-color: {{$ctrl.warRoot.warOptions.themeOptions.footerColor}};">
+    <div class="container px-0">
+        <nav class="nav justify-content-end" style="background-color: {{$ctrl.warRoot.warOptions.themeOptions.footerColor}};">
+
+            <a ng-repeat="link in $ctrl.warRoot.warOptions.themeOptions.footerLinks"
+                ng-if="link.uri"
+                class="nav-link"
+                target="_blank"
+                style="color: {{$ctrl.warRoot.warOptions.themeOptions.footerFontColor}};"
+                href="{{link.url + link.uri}}">
+                    <i class="{{link.logo}}"></i>
+            </a>
+
+        </nav>
+    </div>
+</div>

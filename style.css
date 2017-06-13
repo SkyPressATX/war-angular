@@ -1,0 +1,15 @@
+/* minifyOnSave:false*/
+/*
+Theme Name: WAR Angular
+Author: BMO
+Description: WAR Theme using Angular 1.x and Bootstrap
+Version: 0.0.1
+License: MIT
+*/
+
+#app, body {
+    min-height: 100vh;
+}
+a, button {
+    cursor: pointer;
+}
