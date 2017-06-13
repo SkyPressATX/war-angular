@@ -67,7 +67,7 @@ if( ! class_exists( 'war_theme' ) ):
                 'war_ui_router_js' => array(
                     'url' => get_template_directory_uri().'/inc/lib/angular-ui-router.min.js',
                     'depends' => array('war_angular_js')
-                ),23w1szqxc
+                ),
                 'war_api_client_js' => array(
                     'url' => get_template_directory_uri().'/inc/lib/warApiClient.min.js',
                     'depends' => array('war_angular_js')
