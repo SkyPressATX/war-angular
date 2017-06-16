@@ -88,9 +88,9 @@ angular.module("$warExtend",[
                 parent: 'root',
                 url: '/',
                 views: {
-                    "header": { component: 'warHeader' },
+                    // "header": { component: 'warHeader' },
                     "body": { component: 'warHome' },
-                    "footer": { component: 'warFooter' }
+                    // "footer": { component: 'warFooter' }
                 }
             });
     }])
