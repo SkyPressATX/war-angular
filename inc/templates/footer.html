@@ -1,16 +1,7 @@
-<div style="background-color: {{$ctrl.warRoot.warOptions.themeOptions.footerColor}};">
+<div class="bg-faded">
     <div class="container px-0">
-        <nav class="nav justify-content-end" style="background-color: {{$ctrl.warRoot.warOptions.themeOptions.footerColor}};">
-
-            <a ng-repeat="link in $ctrl.warRoot.warOptions.themeOptions.footerLinks"
-                ng-if="link.uri"
-                class="nav-link"
-                target="_blank"
-                style="color: {{$ctrl.warRoot.warOptions.themeOptions.footerFontColor}};"
-                href="{{link.url + link.uri}}">
-                    <i class="{{link.logo}}"></i>
-            </a>
-
+        <nav class="nav justify-content-end">
+            <span class="nav-item">Powered By WordPress and the <a target="_blank" href="//github.com/SkyPressATX/war-api/wiki">WAR Framework</a></span>
         </nav>
     </div>
 </div>

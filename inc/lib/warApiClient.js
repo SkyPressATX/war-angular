@@ -36,7 +36,7 @@ angular.module( 'warApiClient', [] )
 					url: '/' + that._config.api_prefix + url
 				};
 				if( that._config.nonce ) httpConfig.headers = { 'X-WP-Nonce': that._config.nonce };
-				if( match ) httpConfig.url += '/' + match;
+				if( match ) httpConfig.url += match;
 				if( params && _.isObject( params ) && method === 'GET' ) httpConfig.params = params;
 				if( params && _.isObject( params ) && method !== 'GET' ) httpConfig.data = params;
 
@@ -68,6 +68,7 @@ angular.module( 'warApiClient', [] )
 		'$warCall',
 	    function( $warCall ){
 			this.stashRoutes;
+			this.siteDetails = {};
 			this.namespaces;
 			this.routes = {};
 
@@ -81,6 +82,8 @@ angular.module( 'warApiClient', [] )
 		            .then( function( resp ){
 						if( resp.routes ) that.stashRoutes = resp.routes;
 						if( resp.namespaces ) that.namespaces = resp.namespaces;
+						if( resp.name ) that.siteDetails.name = resp.name;
+						if( resp.description ) that.siteDetails.description = resp.description;
 						return true;
 						throw new Error( 'No Routes Found' );
 					})
@@ -94,7 +97,7 @@ angular.module( 'warApiClient', [] )
 				if( ! ns ) ns = '';
 				_.assign( that.routes, _.transform( that.stashRoutes, function( r, v, k ){
 					if( v.namespace == ns && v.namespace !== _.trimStart( k, '/' ) ){ // We don't want duplicate routes of the namespace
-						var end = _.replace( k, /\W+P\W[a-z0-9]+\W\Wd\W+/, '' );
+						var end = _.replace( k, /\(\?P.+\)/, '' );
 						var endName = _.camelCase( _.replace( _.trimStart( end, '/' ), v.namespace + '/', '' ) );
 						if( ! r[ v.namespace ] ) r[ v.namespace ] = {};
 						if( _.isEmpty( r[ v.namespace ][ endName ] ) ) r[ v.namespace ][ endName ] = {};
@@ -112,9 +115,12 @@ angular.module( 'warApiClient', [] )
 	            return this.routes[ ns ];
 			};
 			this.list = function( ns ){
-	            if( _.isEmpty( this.routes ) ) throw new Error( 'Namespace not found' );
+	            if( ! _.indexOf( this.namespaces, ns ) > 0 ) throw new Error( ns + ' Namespace not found' );
 	            if( ! _.isString( ns ) || ! ns ) return this.routes;
 			    return this.routes[ ns ];
+			};
+			this.site = function(){
+				return this.siteDetails;
 			};
 		}
 	])

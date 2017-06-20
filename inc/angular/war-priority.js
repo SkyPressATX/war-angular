@@ -58,15 +58,16 @@ angular.module("$warExtend",[
         $warConfigProvider.components
             .add( 'warRoot', {
                 templateUrl: $warObject.warPath + '/inc/templates/root.html',
-                bindings: {
-                    warOptions: '<'
-                }
             })
             .add( 'warHome', {
                 template: '<h3>Hello</h3>'
             })
             .add( 'warHeader', {
                 templateUrl: $warObject.warPath + '/inc/templates/header.html',
+                controller: [ '$warClient', function( $warClient ){
+                    var self = this;
+                    self.options = $warClient.site();
+                }]
             })
             .add( 'warFooter', {
                 templateUrl: $warObject.warPath + '/inc/templates/footer.html',
@@ -76,21 +77,12 @@ angular.module("$warExtend",[
             .add( 'root', {
                 abstract: true,
                 component: 'warRoot',
-                resolve: {
-                    warOptions: [ '$warClient', '$warObject', function( $warClient, $warObject ){
-                        return $warClient.name( $warObject.api_namespace ).siteOptions.get()
-                            .then( function( opts ){ return opts })
-                            .catch( function( err ){ console.log( err ); return err; });
-                    }]
-                }
             })
             .add( 'home', {
                 parent: 'root',
                 url: '/',
                 views: {
-                    // "header": { component: 'warHeader' },
                     "body": { component: 'warHome' },
-                    // "footer": { component: 'warFooter' }
                 }
             });
     }])

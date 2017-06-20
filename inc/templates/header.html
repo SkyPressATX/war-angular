@@ -1,13 +1,7 @@
-<nav class="navbar navbar-light" style="background-color: {{$ctrl.warRoot.warOptions.themeOptions.headerColor}};">
-
+<nav class="navbar navbar-light bg-faded">
     <div class="container">
-
-        <div id="site-name" ng-if="(! $ctrl.warRoot.warOptions.themeOptions.siteLogo)">
-            <a class="navbar-brand" style="color: {{$ctrl.warRoot.warOptions.themeOptions.headerFontColor}};" ui-sref="main">{{$ctrl.warRoot.warOptions.siteOptions.siteName}}</a>
+        <div id="site-name" ng-if="($ctrl.options.name)">
+            <a class="navbar-brand" ui-sref="main">{{$ctrl.options.name}}</a>
         </div>
-        <div id="site-logo" ng-if="$ctrl.warRoot.warOptions.themeOptions.siteLogo">
-            <a class="navbar-brand" ui-sref="main"><img alt="{{$ctrl.warRoot.warOptions.siteOptions.siteName}}" class="img-fluid" ng-src="{{$ctrl.warRoot.warOptions.themeOptions.siteLogo}}"></img></a>
-        </div>
-
     </div>
 </nav>
